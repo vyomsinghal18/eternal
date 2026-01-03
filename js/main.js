@@ -6,6 +6,17 @@ enterBtn.addEventListener("click", () => {
   });
 });
 
+const nextButtons = document.querySelectorAll(".next-btn");
+
+nextButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = btn.getAttribute("data-next");
+    document.querySelector(target).scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+});
+
 const chaosLayers = document.querySelectorAll(".chaos");
 
 function randomFloat(min, max) {
@@ -30,19 +41,18 @@ applyChaos();
 // Re-randomize endlessly
 setInterval(applyChaos, 25000);
 
-const revealElements = document.querySelectorAll(".reveal");
+const fadeSections = document.querySelectorAll(".fade-section");
 
-const revealOnScroll = () => {
-  revealElements.forEach(el => {
-    const top = el.getBoundingClientRect().top;
+const revealSections = () => {
+  fadeSections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
     const triggerPoint = window.innerHeight * 0.85;
 
     if (top < triggerPoint) {
-      el.classList.add("visible");
+      section.classList.add("visible");
     }
   });
 };
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-
+window.addEventListener("scroll", revealSections);
+revealSections();

@@ -35,7 +35,9 @@
       linear-gradient(to bottom, #000, #050505);
     position: relative;
     overflow: hidden;
+    padding-top: 20vh;
   }
+  
   
   .atmosphere {
     position: absolute;
@@ -84,6 +86,7 @@
   .title {
     font-family: 'Cinzel', serif;
     font-size: 2.2rem;
+    letter-spacing: 0.12em;
     color: var(--gold);
     margin-bottom: 1rem;
     text-shadow:
@@ -92,20 +95,38 @@
   }
   
   .subtitle {
-    font-size: 1rem;
-    opacity: 0.85;
-    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.75;
+    max-width: 320px;
+    margin: 0 auto 2.2rem;
   }
+  .fade-section:nth-child(1) { transition-delay: 0.1s; }
+  .fade-section:nth-child(2) { transition-delay: 0.3s; }
+  #landing {
+    opacity: 1;
+  }
+  
   
   .enter-btn {
     background: transparent;
-    border: 1px solid var(--gold);
+    border: 1px solid rgba(212, 175, 55, 0.6);
     color: var(--gold);
-    padding: 0.8rem 1.8rem;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 0.8rem 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    border-radius: 40px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .fade-section:nth-child(3) { transition-delay: 0.5s; }
+  #landing {
+    opacity: 1;
+  }
+  
+  
+  .enter-btn:active {
+    background: var(--gold);
+    color: #000;
   }
   
   .enter-btn:hover {
@@ -113,24 +134,51 @@
     color: #000;
   }
 
-  #story {
-    background: linear-gradient(to bottom, #050505, #000);
+  .next-btn {
+    margin: 3rem auto 0;
+    background: transparent;
+    border: none;
+    color: rgba(212, 175, 55, 0.7);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 2s ease;
   }
   
-  .story-block {
-    margin-bottom: 4rem;
+  .next-btn:active {
+    opacity: 1;
   }
   
-  .story-block h2 {
-    font-family: 'Cinzel', serif;
-    color: var(--gold);
-    margin-bottom: 0.8rem;
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
   }
   
-  .story-block p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    opacity: 0.85;
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  
+  /* SECTION FADE-IN */
+.fade-section {
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 3s ease,
+    transform 1.5s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(40px);
+}
+
+
+
+
+.section.visible {
+  opacity: 1;
+}
+
