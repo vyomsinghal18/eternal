@@ -40,18 +40,46 @@
   .atmosphere {
     position: absolute;
     inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.15), transparent),
-      radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.12), transparent),
-      radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.1), transparent);
-    animation: drift 20s linear infinite;
     pointer-events: none;
+    z-index: 0;
+  
+    background-image:
+      radial-gradient(10px 10px at 10% 20%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(5px 5px at 30% 60%, rgba(255,255,255,0.2), transparent),
+      radial-gradient(8px 8px at 50% 90%, rgba(255,255,255,0.22), transparent),
+      radial-gradient(12px 12px at 70% 80%, rgba(255,255,255,0.15), transparent),
+      radial-gradient(6px 6px at 10% 90%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(3px 3px at 40% 20%, rgba(255,255,255,0.2), transparent),
+      radial-gradient(4px 4px at 80% 10%, rgba(255,255,255,0.22), transparent),
+      radial-gradient(12px 12px at 20% 80%, rgba(255,255,255,0.15), transparent),
+      radial-gradient(3px 3px at 34% 40%, rgba(255,255,255,0.22), transparent),
+      radial-gradient(4px 4px at 38% 80%, rgba(255,255,255,0.15), transparent),
+      radial-gradient(2px 2px at 78% 50%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(15px 15px at 90% 30%, rgba(255,255,255,0.18), transparent);
+  
+    transform: translate(var(--x, 0px), var(--y, 0px));
+    transition: transform linear;
+  }
+  .layer-a { opacity: 0.6; }
+  .layer-b { opacity: 0.4; }
+  .layer-c { opacity: 0.25; }  
+
+  #landing h1,
+  #landing p,
+  #landing button {
+    position: relative;
+    z-index: 1;
   }
   
   @keyframes drift {
-    from { transform: translateY(0); }
-    to { transform: translateY(-50px); }
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-60px);
+    }
   }
+  
   
   .title {
     font-family: 'Cinzel', serif;
@@ -84,4 +112,25 @@
     background: var(--gold);
     color: #000;
   }
+
+  #story {
+    background: linear-gradient(to bottom, #050505, #000);
+  }
+  
+  .story-block {
+    margin-bottom: 4rem;
+  }
+  
+  .story-block h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  
+  .story-block p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+  
   
