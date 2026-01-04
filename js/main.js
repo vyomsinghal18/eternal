@@ -56,3 +56,20 @@ const revealSections = () => {
 
 window.addEventListener("scroll", revealSections);
 revealSections();
+
+const albumCards = document.querySelectorAll(".album-card");
+
+albumCards.forEach(card => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("active");
+  });
+});
+
+/* Timeline Item Toggle */
+const timelineItems = document.querySelectorAll(".timeline-item");
+
+timelineItems.forEach(item => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
+});
