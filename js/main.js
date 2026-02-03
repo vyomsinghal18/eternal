@@ -55,6 +55,7 @@ const revealSections = () => {
 };
 
 window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
 revealSections();
 
 /* Album Card Toggle */
@@ -119,24 +120,3 @@ closeBtn.addEventListener("click", () => {
 });
 
 /* Album Category Carousel */
-const overlay = document.getElementById("carouselOverlay");
-const closeBtn = document.getElementById("closeCarousel");
-const categoryCards = document.querySelectorAll(".album-category");
-
-let embla = null;
-
-categoryCards.forEach(card => {
-  card.addEventListener("click", () => {
-    overlay.classList.add("active");
-
-    if (!embla) {
-      embla = EmblaCarousel(document.querySelector(".embla"), {
-        loop: false
-      });
-    }
-  });
-});
-
-closeBtn.addEventListener("click", () => {
-  overlay.classList.remove("active");
-});
