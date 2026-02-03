@@ -306,4 +306,101 @@
   background: rgba(255, 0, 0, 0.1);
 }
 
+.album-secret {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.album-card.secret .album-secret {
+  opacity: 1;
+}
+
+.album-categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.album-category {
+  height: 120px;
+  border: 1px solid rgba(212,175,55,0.4);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.album-category:active {
+  transform: scale(0.96);
+}
+
+#carouselOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 999;
+}
+
+#carouselOverlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.embla {
+  width: 90%;
+  max-width: 400px;
+  transform: scale(0.95);
+  transition: transform 0.4s ease;
+}
+
+#carouselOverlay.active .embla {
+  transform: scale(1);
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  padding: 0.5rem;
+}
+
+.embla__slide img,
+.embla__slide video {
+  width: 100%;
+  border-radius: 16px;
+}
+
+#closeCarousel {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+}
 

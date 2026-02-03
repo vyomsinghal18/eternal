@@ -57,13 +57,35 @@ const revealSections = () => {
 window.addEventListener("scroll", revealSections);
 revealSections();
 
+/* Album Card Toggle */
 const albumCards = document.querySelectorAll(".album-card");
 
 albumCards.forEach(card => {
   card.addEventListener("click", () => {
+    albumCards.forEach(c => {
+      if (c !== card) c.classList.remove("active");
+    });
     card.classList.toggle("active");
   });
 });
+
+/* Album Card Long Press for Secret Message */
+let pressTimer;
+
+albumCards.forEach(card => {
+  card.addEventListener("touchstart", () => {
+    pressTimer = setTimeout(() => {
+      card.classList.add("secret");
+    }, 800);
+  });
+
+  card.addEventListener("touchend", () => {
+    clearTimeout(pressTimer);
+    card.classList.remove("secret");
+  });
+});
+
+
 
 /* Timeline Item Toggle */
 const timelineItems = document.querySelectorAll(".timeline-item");
@@ -72,4 +94,49 @@ timelineItems.forEach(item => {
   item.addEventListener("click", () => {
     item.classList.toggle("active");
   });
+});
+
+const overlay = document.getElementById("carouselOverlay");
+const closeBtn = document.getElementById("closeCarousel");
+const categoryCards = document.querySelectorAll(".album-category");
+
+let embla;
+
+categoryCards.forEach(card => {
+  card.addEventListener("click", () => {
+    overlay.classList.add("active");
+
+    if (!embla) {
+      embla = EmblaCarousel(document.querySelector(".embla"), {
+        loop: false
+      });
+    }
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("active");
+});
+
+/* Album Category Carousel */
+const overlay = document.getElementById("carouselOverlay");
+const closeBtn = document.getElementById("closeCarousel");
+const categoryCards = document.querySelectorAll(".album-category");
+
+let embla;
+
+categoryCards.forEach(card => {
+  card.addEventListener("click", () => {
+    overlay.classList.add("active");
+
+    if (!embla) {
+      embla = EmblaCarousel(document.querySelector(".embla"), {
+        loop: false
+      });
+    }
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("active");
 });

@@ -10,6 +10,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
+  <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
 </head>
 
 <body>
@@ -97,30 +98,126 @@
 
     <h2 class="album-title">Sacred Memories</h2>
   
-    <div class="album-grid">
-  
-      <div class="album-card">
-        <img src="assets/images/album/devil.png" alt="Memory 1">
-        <div class="album-caption">
-          You smiled like this and I knew the day was perfect.
+    
+  <div class="album-categories">
+
+    <div class="album-category" data-category="cute">
+      <span>Cute</span>
+      <div id="carouselOverlay">
+
+        <button id="closeCarousel">✕</button>
+      
+        <div class="embla">
+          <div class="embla__container">
+      
+            <!-- SAMPLE SLIDES -->
+            <div class="embla__slide">
+              <img src="assets/images/cute/1.jpg">
+            </div>
+      
+            <div class="embla__slide">
+              <video src="assets/videos/cute/1.mp4" controls></video>
+            </div>
+      
+            <div class="embla__slide">
+              <img src="assets/images/cute/2.jpg">
+            </div>
+      
+          </div>
         </div>
+      
       </div>
-  
-      <div class="album-card">
-        <img src="assets/images/album/REF1.jpg" alt="Memory 2">
-        <div class="album-caption">
-          We laughed for no reason — my favorite kind of moments.
-        </div>
-      </div>
-  
-      <div class="album-card">
-        <img src="assets/images/album/REF.png" alt="Memory 3">
-        <div class="album-caption">
-          Quiet, calm, and somehow everything felt right.
-        </div>
-      </div>
-  
+      
     </div>
+
+    <div class="album-category" data-category="crazy">
+      <span>Crazy</span>
+      <div id="carouselOverlay">
+
+        <button id="closeCarousel">✕</button>
+      
+        <div class="embla">
+          <div class="embla__container">
+      
+            <!-- SAMPLE SLIDES -->
+            <div class="embla__slide">
+              <img src="assets/images/cute/1.jpg">
+            </div>
+      
+            <div class="embla__slide">
+              <video src="assets/videos/cute/1.mp4" controls></video>
+            </div>
+      
+            <div class="embla__slide">
+              <img src="assets/images/cute/2.jpg">
+            </div>
+      
+          </div>
+        </div>
+      
+      </div>
+      
+    </div>
+
+    <div class="album-category" data-category="soft">
+      <span>Soft</span>
+      <div id="carouselOverlay">
+
+        <button id="closeCarousel">✕</button>
+      
+        <div class="embla">
+          <div class="embla__container">
+      
+            <!-- SAMPLE SLIDES -->
+            <div class="embla__slide">
+              <img src="assets/images/cute/1.jpg">
+            </div>
+      
+            <div class="embla__slide">
+              <video src="assets/videos/cute/1.mp4" controls></video>
+            </div>
+      
+            <div class="embla__slide">
+              <img src="assets/images/cute/2.jpg">
+            </div>
+      
+          </div>
+        </div>
+      
+      </div>
+      
+    </div>
+
+    <div class="album-category" data-category="trips">
+      <span>Trips</span>
+      <div id="carouselOverlay">
+
+        <button id="closeCarousel">✕</button>
+      
+        <div class="embla">
+          <div class="embla__container">
+      
+            <!-- SAMPLE SLIDES -->
+            <div class="embla__slide">
+              <img src="assets/images/cute/1.jpg">
+            </div>
+      
+            <div class="embla__slide">
+              <video src="assets/videos/cute/1.mp4" controls></video>
+            </div>
+      
+            <div class="embla__slide">
+              <img src="assets/images/cute/2.jpg">
+            </div>
+      
+          </div>
+        </div>
+      
+      </div>
+      
+    </div>
+
+  </div>
   
     <button class="next-btn" data-next="#surprises">
       Lets go birthday girl !!
