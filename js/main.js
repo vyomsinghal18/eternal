@@ -123,7 +123,7 @@ const overlay = document.getElementById("carouselOverlay");
 const closeBtn = document.getElementById("closeCarousel");
 const categoryCards = document.querySelectorAll(".album-category");
 
-let embla;
+let embla = null;
 
 categoryCards.forEach(card => {
   card.addEventListener("click", () => {
