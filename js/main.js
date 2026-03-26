@@ -97,23 +97,92 @@ timelineItems.forEach(item => {
   });
 });
 
+const naughtyBox = document.getElementById("secret2");
+
+naughtyBox.addEventListener("mouseenter", () => {
+  naughtyBox.style.transform = "translateX(10px)";
+});
+
+naughtyBox.addEventListener("mouseleave", () => {
+  naughtyBox.style.transform = "translateX(0)";
+});
+
+function moveRandomly(element) {
+  return new Promise(resolve => {
+    const x = (Math.random() - 0.5) * 80; // -40px to +40px
+    const y = (Math.random() - 0.5) * 80;
+
+    element.style.transform = `translate(${x}px, ${y}px)`;
+
+    setTimeout(resolve, 250);
+  });
+}
+
+let moving = false;
+
+function startMoving(element) {
+  moving = true;
+
+  function move() {
+    if (!moving) return;
+
+    const x = (Math.random() - 0.5) * 200;
+    const y = (Math.random() - 0.5) * 200;
+
+    element.style.transform = `translate(${x}px, ${y}px)`;
+
+    // pause briefly so it's tappable
+    setTimeout(() => {
+      if (moving) move();
+    }, 250); // 👈 sweet spot (not too hard, not too easy)
+  }
+
+  move();
+}
+
 const secretBoxes = document.querySelectorAll(".secret-box");
 const finalMessage = document.getElementById("finalMessage");
 
 let unlocked = 0;
+let movingBox = null;
 
-secretBoxes.forEach(box => {
+const playfulTexts = [
+  "I told you not to 😌",
+  "You don’t listen, do you?",
+  "Okay… that was expected",
+  "Curiosity suits you"
+];
+
+secretBoxes.forEach((box, index) => {
   box.addEventListener("click", () => {
 
-    if (!box.classList.contains("opened")) {
-      box.classList.add("opened");
-      unlocked++;
+    // If it's the moving box → STOP it
+    if (box === movingBox && moving) {
+      moving = false;
+      box.style.transform = "translate(0, 0)";
+      box.innerHTML = "okay… you got me 😄";
+
+      setTimeout(() => {
+        finalMessage.classList.add("visible");
+      }, 300);
+
+      return;
     }
 
-    box.innerHTML = "…you found something";
+    // Prevent re-click
+    if (box.classList.contains("opened")) return;
 
+    box.classList.add("opened");
+    unlocked++;
+
+    // If this is the LAST box → start moving
     if (unlocked === secretBoxes.length) {
-      finalMessage.classList.add("visible");
+      movingBox = box;
+      box.innerHTML = "Catch me 😏";
+      startMoving(box);
+    } else {
+      box.innerHTML = playfulTexts[index % playfulTexts.length];
     }
+
   });
 });

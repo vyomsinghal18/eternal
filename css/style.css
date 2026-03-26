@@ -436,7 +436,9 @@
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transition: all 0.3s ease;
+
+  position: relative; /* IMPORTANT */
+  transition: transform 0.25s ease;
 }
 
 .secret-box:active {
@@ -455,4 +457,11 @@
   opacity: 1;
 }
 
+.secret-box.naughty {
+  transition: transform 0.2s ease;
+}
 
+.secret-box.opened {
+  border-color: var(--gold);
+  color: var(--gold);
+}
