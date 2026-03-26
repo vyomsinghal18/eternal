@@ -322,31 +322,137 @@
 .album-card.secret .album-secret {
   opacity: 1;
 }
-
-.album-categories {
+.album-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
+  gap: 1rem;
   max-width: 360px;
   margin: 0 auto;
 }
 
-.album-category {
-  height: 120px;
-  border: 1px solid rgba(212,175,55,0.4);
-  border-radius: 16px;
+.album-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.album-card img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Hidden message */
+.album-message {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 1rem;
+  line-height: 1.5;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gold);
-  letter-spacing: 0.15em;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  text-align: center;
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
-.album-category:active {
+/* When active */
+.album-card.active .album-message {
+  opacity: 1;
+}
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.album-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.album-card img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Hidden message */
+.album-message {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 1rem;
+  line-height: 1.5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* When active */
+.album-card.active .album-message {
+  opacity: 1;
+}
+.surprise-title {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+.surprise-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Secret boxes */
+.secret-box {
+  width: 220px;
+  height: 80px;
+  border: 1px dashed rgba(212,175,55,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(212,175,55,0.6);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secret-box:active {
   transform: scale(0.96);
+}
+
+/* Hidden message */
+.surprise-message {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.surprise-message.visible {
+  opacity: 1;
 }
 
 

@@ -97,26 +97,23 @@ timelineItems.forEach(item => {
   });
 });
 
-const overlay = document.getElementById("carouselOverlay");
-const closeBtn = document.getElementById("closeCarousel");
-const categoryCards = document.querySelectorAll(".album-category");
+const secretBoxes = document.querySelectorAll(".secret-box");
+const finalMessage = document.getElementById("finalMessage");
 
-let embla;
+let unlocked = 0;
 
-categoryCards.forEach(card => {
-  card.addEventListener("click", () => {
-    overlay.classList.add("active");
+secretBoxes.forEach(box => {
+  box.addEventListener("click", () => {
 
-    if (!embla) {
-      embla = EmblaCarousel(document.querySelector(".embla"), {
-        loop: false
-      });
+    if (!box.classList.contains("opened")) {
+      box.classList.add("opened");
+      unlocked++;
+    }
+
+    box.innerHTML = "…you found something";
+
+    if (unlocked === secretBoxes.length) {
+      finalMessage.classList.add("visible");
     }
   });
 });
-
-closeBtn.addEventListener("click", () => {
-  overlay.classList.remove("active");
-});
-
-/* Album Category Carousel */
