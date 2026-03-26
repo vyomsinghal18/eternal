@@ -126,15 +126,15 @@ function startMoving(element) {
   function move() {
     if (!moving) return;
 
-    const x = (Math.random() - 0.5) * 200;
-    const y = (Math.random() - 0.5) * 200;
+    const x = (Math.random() - 0.5) * 400;
+    const y = (Math.random() - 0.5) * 400;
 
     element.style.transform = `translate(${x}px, ${y}px)`;
 
     // pause briefly so it's tappable
     setTimeout(() => {
       if (moving) move();
-    }, 250); // 👈 sweet spot (not too hard, not too easy)
+    }, 500); // 👈 sweet spot (not too hard, not too easy)
   }
 
   move();
@@ -185,4 +185,19 @@ secretBoxes.forEach((box, index) => {
     }
 
   });
+});
+
+const surpriseSection = document.getElementById("surprises");
+const deepSecret = document.getElementById("deepSecret");
+
+let pressTimer2;
+
+surpriseSection.addEventListener("touchstart", () => {
+  pressTimer2 = setTimeout(() => {
+    deepSecret.classList.add("visible");
+  }, 800); // hold duration
+});
+
+surpriseSection.addEventListener("touchend", () => {
+  clearTimeout(pressTimer2);
 });

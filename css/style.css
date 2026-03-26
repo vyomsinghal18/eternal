@@ -465,3 +465,23 @@
   border-color: var(--gold);
   color: var(--gold);
 }
+
+.deep-secret {
+  position: fixed;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  font-size: 0.9rem;
+  color: white;
+  text-align: center;
+  max-width: 280px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.deep-secret.visible {
+  opacity: 1;
+}
