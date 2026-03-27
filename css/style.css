@@ -436,9 +436,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   cursor: pointer;
-
-  position: relative; /* IMPORTANT */
-  transition: transform 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .secret-box:active {
@@ -464,24 +462,4 @@
 .secret-box.opened {
   border-color: var(--gold);
   color: var(--gold);
-}
-
-.deep-secret {
-  position: fixed;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  
-  font-size: 0.9rem;
-  color: white;
-  text-align: center;
-  max-width: 280px;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-.deep-secret.visible {
-  opacity: 1;
 }

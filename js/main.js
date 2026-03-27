@@ -186,32 +186,3 @@ secretBoxes.forEach((box, index) => {
 
   });
 });
-
-const surpriseSection = document.getElementById("surprises");
-const deepSecret = document.getElementById("deepSecret");
-
-let pressTimer2 = null;
-let isHolding = false;
-
-// TOUCH START
-surpriseSection.addEventListener("touchstart", (e) => {
-  isHolding = true;
-
-  pressTimer2 = setTimeout(() => {
-    if (isHolding) {
-      deepSecret.classList.add("visible");
-    }
-  }, 800);
-});
-
-// TOUCH MOVE (if user scrolls → cancel)
-surpriseSection.addEventListener("touchmove", () => {
-  isHolding = false;
-  clearTimeout(pressTimer2);
-});
-
-// TOUCH END
-surpriseSection.addEventListener("touchend", () => {
-  isHolding = false;
-  clearTimeout(pressTimer2);
-});
