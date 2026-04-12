@@ -463,3 +463,33 @@
   border-color: var(--gold);
   color: var(--gold);
 }
+
+.birthday-paragraph {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  opacity: 0;
+  max-width: 320px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.voice-note-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#voiceBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#voiceBtn:active {
+  transform: scale(0.95);
+}

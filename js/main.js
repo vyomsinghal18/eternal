@@ -186,3 +186,120 @@ secretBoxes.forEach((box, index) => {
 
   });
 });
+
+const birthdayPara = document.querySelector(".birthday-paragraph");
+
+const showBirthday = () => {
+  const rect = birthdayPara.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight * 0.8) {
+    birthdayPara.style.opacity = "1";
+  }
+};
+
+window.addEventListener("scroll", showBirthday);
+
+/* Background Music on Birthday Section */
+const music = document.getElementById("bgMusic");
+const birthdaySection = document.getElementById("birthday");
+
+let musicStarted = false;
+
+const playMusicOnScroll = () => {
+  if (musicStarted) return;
+
+  const rect = birthdaySection.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight * 0.7) {
+    musicStarted = true;
+
+    music.volume = 0.1; // start low
+    music.play().catch(() => {});
+
+    // smooth fade in
+    let vol = 0.1;
+    const fade = setInterval(() => {
+      if (vol < 1) {
+        vol += 0.05;
+        music.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 300);
+  }
+};
+
+window.addEventListener("scroll", playMusicOnScroll);
+
+/* Voice Note Playback */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const voiceBtn = document.getElementById("voiceBtn");
+  const voiceNote = document.getElementById("voiceNote");
+  const music = document.getElementById("bgMusic");
+  const birthdaySection = document.getElementById("birthday");
+
+  let isPlaying = false;
+  let musicStarted = false;
+
+  // 🎵 Start music on scroll to birthday
+  window.addEventListener("scroll", () => {
+    if (musicStarted) return;
+
+    const rect = birthdaySection.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight * 0.7) {
+      musicStarted = true;
+      music.volume = 0.2;
+      music.play().catch(() => {});
+    }
+  });
+
+  // 🎙️ Voice button logic
+  voiceBtn.addEventListener("click", () => {
+
+    if (!isPlaying) {
+      // Lower background music
+      let vol = music.volume;
+
+      const fadeDown = setInterval(() => {
+        if (vol > 0.08) {
+          vol -= 0.02;
+          music.volume = vol;
+        } else {
+          clearInterval(fadeDown);
+        }
+      }, 100);
+
+      voiceNote.play();
+      voiceBtn.textContent = "⏸";
+      isPlaying = true;
+
+    } else {
+      voiceNote.pause();
+
+      if (musicStarted) music.volume = 0.5;
+
+      voiceBtn.textContent = "▶";
+      isPlaying = false;
+    }
+  });
+
+  // 🔁 When voice ends
+  voiceNote.addEventListener("ended", () => {
+    isPlaying = false;
+    voiceBtn.textContent = "▶";
+
+    let vol = music.volume;
+
+    const fadeUp = setInterval(() => {
+      if (vol < 0.2) {
+        vol += 0.02;
+        music.volume = vol;
+      } else {
+        clearInterval(fadeUp);
+      }
+    }, 120);
+  });
+
+});
