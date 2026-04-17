@@ -303,3 +303,111 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+/* Album Video Hover Play  For mobile, it plays on tap */
+const videos = document.querySelectorAll(".album-video");
+
+videos.forEach(video => {
+  video.addEventListener("mouseenter", () => video.play());
+  video.addEventListener("mouseleave", () => video.pause());
+
+  // Mobile support
+  video.addEventListener("touchstart", () => video.play());
+});
+
+albumCards.forEach(card => {
+  card.addEventListener("click", () => {
+
+    const video = card.querySelector("video");
+
+    if (video) {
+      if (card.classList.contains("active")) {
+        video.pause();
+      } else {
+        video.play();
+      }
+    }
+
+  });
+});
+
+
+/* Particle Background */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+const PARTICLE_COUNT = 100;
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+
+    this.size = Math.random() * 2 + 0.5;
+
+    this.speedX = (Math.random() - 0.5) * 0.2;
+    this.speedY = (Math.random() - 0.5) * 0.2;
+
+    this.opacity = Math.random() * 0.5 + 0.2;
+    this.fade = Math.random() * 0.01;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    // wrap around edges
+    if (this.x < 0) this.x = canvas.width;
+    if (this.x > canvas.width) this.x = 0;
+    if (this.y < 0) this.y = canvas.height;
+    if (this.y > canvas.height) this.y = 0;
+
+    // twinkle effect
+    this.opacity += this.fade;
+
+    if (this.opacity > 0.8 || this.opacity < 0.2) {
+      this.fade *= -1;
+    }
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+    ctx.fillStyle = `rgba(212,175,55,${this.opacity})`;
+    ctx.fill();
+  }
+}
+
+// create particles
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  particles.push(new Particle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+
+  requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
+
+// resize fix
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});

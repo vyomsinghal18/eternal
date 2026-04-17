@@ -10,12 +10,18 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  html {
+    scroll-behavior: smooth;
+}
   
   body {
     background: var(--bg-black);
     color: var(--text-light);
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
   }
   
   /* COMMON SECTION */
@@ -26,6 +32,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    padding: 80px 20px;
   }
   .album-title {
     font-family: 'Cinzel', serif;
@@ -185,7 +192,7 @@
     background: transparent;
     border: none;
     color: rgba(212, 175, 55, 0.7);
-    font-size: 0.75rem;
+    font-size: 1rem;
     letter-spacing: 0.15em;
     cursor: pointer;
     opacity: 0.6;
@@ -194,6 +201,7 @@
   
   .next-btn:active {
     opacity: 1;
+    transform: scale(0.95);
   }
   
 
@@ -488,8 +496,36 @@
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(212,175,55,0.2);
 }
 
 #voiceBtn:active {
   transform: scale(0.95);
+}
+
+/* Video styling */
+.album-video {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+/* Particle canvas */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+p {
+  font-weight: 300;
 }
