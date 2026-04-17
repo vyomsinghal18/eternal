@@ -504,12 +504,7 @@
 }
 
 /* Video styling */
-.album-video {
-  width: 10%;
-  display: block;
-  border-radius: 14px;
-  object-fit: cover;
-}
+
 
 /* Particle canvas */
 #particles {
